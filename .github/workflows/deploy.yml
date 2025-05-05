@@ -33,6 +33,10 @@ jobs:
 
       - name: Build step
         run: "npm run build"
+        env:
+          RECAPTCHA_SECRET_KEY: ${{ secrets.RECAPTCHA_SECRET_KEY }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
@@ -40,5 +44,3 @@ jobs:
           project: "cpu-fartlabs-org"
           entrypoint: "jsr:@deno/nextjs-start"
           root: "."
-          include: .next, public
-          
