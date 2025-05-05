@@ -1,46 +1,48 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Loader2 } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 
 export default function SignUpForm() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     reason: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
     // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setIsSubmitted(true)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setIsSubmitted(true);
     } catch (err) {
-      setError("Something went wrong. Please try again.")
+      setError("Something went wrong. Please try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
@@ -63,14 +65,18 @@ export default function SignUpForm() {
         </div>
         <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
         <p className="text-[#a3ffb0]/80">
-          Your application has been received. We'll contact you soon with next steps to claim your FartLabs Computer.
+          Your application has been received. We'll contact you soon with next
+          steps to claim your FartLabs Computer.
         </p>
       </div>
-    )
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-[#1a3a1a] bg-[#0a1f0a] p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 rounded-lg border border-[#1a3a1a] bg-[#0a1f0a] p-6"
+    >
       <div className="space-y-2">
         <Label htmlFor="name">Full Name</Label>
         <Input
@@ -110,9 +116,17 @@ export default function SignUpForm() {
         />
       </div>
 
-      {error && <div className="rounded bg-red-900/20 p-3 text-sm text-red-400">{error}</div>}
+      {error && (
+        <div className="rounded bg-red-900/20 p-3 text-sm text-red-400">
+          {error}
+        </div>
+      )}
 
-      <Button type="submit" disabled={isSubmitting} className="w-full bg-[#4a8c56] text-white hover:bg-[#5aa366]">
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full bg-[#4a8c56] text-white hover:bg-[#5aa366]"
+      >
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -123,5 +137,5 @@ export default function SignUpForm() {
         )}
       </Button>
     </form>
-  )
+  );
 }

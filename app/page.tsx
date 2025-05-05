@@ -1,19 +1,27 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import Image from "next/image"
-import ParticleBackground from "@/components/particle-background"
-import TerminalText from "@/components/terminal-text"
-import ScrollReveal from "@/components/scroll-reveal"
-import SignUpForm from "@/components/sign-up-form"
-import { ChevronDown } from "lucide-react"
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import ParticleBackground from "@/components/particle-background";
+import TerminalText from "@/components/terminal-text";
+import ScrollReveal from "@/components/scroll-reveal";
+import SignUpForm from "@/components/sign-up-form";
+import { ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FartLabs Computer | Imagination-driven development",
-  description: "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
-  keywords: ["FartLabs", "computer", "imagination-driven", "development", "customizable"],
+  description:
+    "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
+  keywords: [
+    "FartLabs",
+    "computer",
+    "imagination-driven",
+    "development",
+    "customizable",
+  ],
   openGraph: {
     title: "FartLabs Computer | Imagination-driven development",
-    description: "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
+    description:
+      "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
     url: "https://fartlabs.org",
     siteName: "FartLabs",
     images: [
@@ -27,7 +35,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-}
+};
 
 export default function Home() {
   return (
@@ -48,13 +56,22 @@ export default function Home() {
             <span className="text-xl font-bold tracking-tight">FartLabs</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm hover:text-white transition-colors">
+            <Link
+              href="#features"
+              className="text-sm hover:text-white transition-colors"
+            >
               Features
             </Link>
-            <Link href="#about" className="text-sm hover:text-white transition-colors">
+            <Link
+              href="#about"
+              className="text-sm hover:text-white transition-colors"
+            >
               About
             </Link>
-            <Link href="#signup" className="text-sm hover:text-white transition-colors">
+            <Link
+              href="#signup"
+              className="text-sm hover:text-white transition-colors"
+            >
               Sign Up
             </Link>
           </nav>
@@ -74,7 +91,11 @@ export default function Home() {
             <TerminalText text="The FartLabs Computer" />
           </h1>
           <p className="mb-8 text-xl text-[#a3ffb0]/80 md:text-2xl">
-            <TerminalText text="Software that works the way you imagine it should." delay={1500} speed={50} />
+            <TerminalText
+              text="Software that works the way you imagine it should."
+              delay={1500}
+              speed={50}
+            />
           </p>
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
@@ -91,7 +112,13 @@ export default function Home() {
             </Link>
           </div>
           <div className="relative mx-auto aspect-video max-w-2xl overflow-hidden rounded-lg border-2 border-[#1a3a1a] shadow-2xl">
-            <Image src="/computer-hero.png" alt="FartLabs Computer" fill className="object-cover" priority />
+            <Image
+              src="/computer-hero.png"
+              alt="FartLabs Computer"
+              fill
+              className="object-cover"
+              priority
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f0a] via-transparent to-transparent"></div>
           </div>
         </div>
@@ -125,13 +152,21 @@ export default function Home() {
                     strokeLinejoin="round"
                     className="text-[#a3ffb0]"
                   >
-                    <rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect>
+                    <rect
+                      width="18"
+                      height="12"
+                      x="3"
+                      y="4"
+                      rx="2"
+                      ry="2"
+                    ></rect>
                     <line x1="2" x2="22" y1="20" y2="20"></line>
                   </svg>
                 </div>
                 <h3 className="mb-2 text-xl font-bold">Bare Essentials</h3>
                 <p className="text-[#a3ffb0]/80">
-                  The FartLabs Computer comes with the bare essentials. Program a user profile to make it your own.
+                  The FartLabs Computer comes with the bare essentials. Program
+                  a user profile to make it your own.
                 </p>
               </div>
             </ScrollReveal>
@@ -158,7 +193,8 @@ export default function Home() {
                 </div>
                 <h3 className="mb-2 text-xl font-bold">Think It, Build It</h3>
                 <p className="text-[#a3ffb0]/80">
-                  Think about what you want, then it happens. Our intuitive interface responds to your imagination.
+                  Think about what you want, then it happens. Our intuitive
+                  interface responds to your imagination.
                 </p>
               </div>
             </ScrollReveal>
@@ -185,9 +221,12 @@ export default function Home() {
                     <path d="M16 18v-3"></path>
                   </svg>
                 </div>
-                <h3 className="mb-2 text-xl font-bold">Customizable Software</h3>
+                <h3 className="mb-2 text-xl font-bold">
+                  Customizable Software
+                </h3>
                 <p className="text-[#a3ffb0]/80">
-                  Software that works the way you imagine it should. No more adapting to rigid interfaces.
+                  Software that works the way you imagine it should. No more
+                  adapting to rigid interfaces.
                 </p>
               </div>
             </ScrollReveal>
@@ -201,25 +240,38 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 items-center">
             <ScrollReveal>
               <div className="relative aspect-square overflow-hidden rounded-lg border-2 border-[#1a3a1a] shadow-2xl">
-                <Image src="/computer-retro.png" alt="Retro FartLabs Computer" fill className="object-cover" />
+                <Image
+                  src="/computer-retro.png"
+                  alt="Retro FartLabs Computer"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
               <div>
-                <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl">The Future of Computing</h2>
+                <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl">
+                  The Future of Computing
+                </h2>
                 <div className="space-y-4 text-[#a3ffb0]/80">
                   <p>
-                    The FartLabs Computer represents a paradigm shift in how we interact with technology. Inspired by
-                    classic systems like LCARS and early personal computers, we've created something entirely new.
+                    The FartLabs Computer represents a paradigm shift in how we
+                    interact with technology. Inspired by classic systems like
+                    LCARS and early personal computers, we've created something
+                    entirely new.
                   </p>
                   <p>
-                    Our system adapts to you, not the other way around. With imagination-driven development, the
-                    computer responds to your thoughts and needs, creating a truly personalized experience.
+                    Our system adapts to you, not the other way around. With
+                    imagination-driven development, the computer responds to
+                    your thoughts and needs, creating a truly personalized
+                    experience.
                   </p>
                   <p>
-                    Whether you're a nostalgic tech enthusiast or a forward-thinking developer, the FartLabs Computer
-                    offers the perfect blend of retro aesthetics and cutting-edge functionality.
+                    Whether you're a nostalgic tech enthusiast or a
+                    forward-thinking developer, the FartLabs Computer offers the
+                    perfect blend of retro aesthetics and cutting-edge
+                    functionality.
                   </p>
                 </div>
                 <div className="mt-8">
@@ -240,7 +292,9 @@ export default function Home() {
       <section className="py-20 sm:py-32">
         <div className="container px-4">
           <ScrollReveal>
-            <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:text-4xl">What Users Are Saying</h2>
+            <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:text-4xl">
+              What Users Are Saying
+            </h2>
           </ScrollReveal>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -252,12 +306,15 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="font-medium">Jean-Luc D.</h3>
-                    <p className="text-sm text-[#a3ffb0]/60">Starship Captain</p>
+                    <p className="text-sm text-[#a3ffb0]/60">
+                      Starship Captain
+                    </p>
                   </div>
                 </div>
                 <p className="text-[#a3ffb0]/80">
-                  "The FartLabs Computer interface reminds me of our ship's systems, but with even more intuitive
-                  controls. It's like the computer reads my mind."
+                  "The FartLabs Computer interface reminds me of our ship's
+                  systems, but with even more intuitive controls. It's like the
+                  computer reads my mind."
                 </p>
               </div>
             </ScrollReveal>
@@ -274,8 +331,9 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-[#a3ffb0]/80">
-                  "I thought I knew what a computer could be, but FartLabs has reimagined the entire concept. It's both
-                  familiar and revolutionary at the same time."
+                  "I thought I knew what a computer could be, but FartLabs has
+                  reimagined the entire concept. It's both familiar and
+                  revolutionary at the same time."
                 </p>
               </div>
             </ScrollReveal>
@@ -288,12 +346,15 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="font-medium">Bill G.</h3>
-                    <p className="text-sm text-[#a3ffb0]/60">Software Pioneer</p>
+                    <p className="text-sm text-[#a3ffb0]/60">
+                      Software Pioneer
+                    </p>
                   </div>
                 </div>
                 <p className="text-[#a3ffb0]/80">
-                  "The user selection menu is unlike anything I've ever created. FartLabs has taken customization to a
-                  whole new level. I'm genuinely impressed."
+                  "The user selection menu is unlike anything I've ever created.
+                  FartLabs has taken customization to a whole new level. I'm
+                  genuinely impressed."
                 </p>
               </div>
             </ScrollReveal>
@@ -310,8 +371,8 @@ export default function Home() {
                 Claim Your Free FartLabs Computer Today!
               </h2>
               <p className="mb-8 text-[#a3ffb0]/80">
-                Join the waitlist to be among the first to experience the future of computing. Limited quantities
-                available.
+                Join the waitlist to be among the first to experience the future
+                of computing. Limited quantities available.
               </p>
             </ScrollReveal>
 
@@ -340,19 +401,34 @@ export default function Home() {
             </div>
 
             <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              <Link href="#features" className="text-xs hover:text-white transition-colors">
+              <Link
+                href="#features"
+                className="text-xs hover:text-white transition-colors"
+              >
                 Features
               </Link>
-              <Link href="#about" className="text-xs hover:text-white transition-colors">
+              <Link
+                href="#about"
+                className="text-xs hover:text-white transition-colors"
+              >
                 About
               </Link>
-              <Link href="#signup" className="text-xs hover:text-white transition-colors">
+              <Link
+                href="#signup"
+                className="text-xs hover:text-white transition-colors"
+              >
                 Sign Up
               </Link>
-              <Link href="/privacy" className="text-xs hover:text-white transition-colors">
+              <Link
+                href="/privacy"
+                className="text-xs hover:text-white transition-colors"
+              >
                 Privacy
               </Link>
-              <Link href="/terms" className="text-xs hover:text-white transition-colors">
+              <Link
+                href="/terms"
+                className="text-xs hover:text-white transition-colors"
+              >
                 Terms
               </Link>
             </nav>
@@ -364,5 +440,5 @@ export default function Home() {
         </div>
       </footer>
     </main>
-  )
+  );
 }

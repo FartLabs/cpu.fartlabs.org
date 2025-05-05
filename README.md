@@ -1,30 +1,29 @@
-# Fartlabs landing page
+# cpu.fartlabs.org
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+The official FartLabs Computer product landing page is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/ethanthatonekids-projects/v0-fartlabs-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/BAx78FNEO6O)
+## Getting started
 
-## Overview
+Install the dependencies:
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+```bash
+npm i --legacy-peer-deps
+```
 
-## Deployment
+Run the development server:
 
-Your project is live at:
+```bash
+npm run dev
+```
 
-**[https://vercel.com/ethanthatonekids-projects/v0-fartlabs-landing-page](https://vercel.com/ethanthatonekids-projects/v0-fartlabs-landing-page)**
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Build your app
+## Deploy on Vercel
 
-Continue building your app on:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
 
-**[https://v0.dev/chat/projects/BAx78FNEO6O](https://v0.dev/chat/projects/BAx78FNEO6O)**
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## How It Works
+---
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Developed with <3 [**@FartLabs**](https://github.com/FartLabs)
