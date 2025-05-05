@@ -5,12 +5,12 @@ if (!dbURL) {
   throw new Error("TURSO_DATABASE_URL is not set");
 }
 
-const dbSecret = process.env.TURSO_AUTH_TOKEN;
-if (!dbSecret) {
+const dbToken = process.env.TURSO_AUTH_TOKEN;
+if (!dbToken) {
   throw new Error("TURSO_AUTH_TOKEN is not set");
 }
 
-const client = createClient({ url: dbURL, authToken: dbSecret });
+const client = createClient({ url: dbURL, authToken: dbToken });
 
 export async function POST(request: Request) {
   const body: { token: string; email: string } = await request.json();
@@ -53,23 +53,12 @@ export async function POST(request: Request) {
       ])
       .then((result) => {
         if (result[1].rows.length > 0) {
-          return new Response(
-            JSON.stringify({ error: "Email already registered" }),
-            { status: 400 },
-          );
+          throw new Error("Email already registered");
         }
       });
-  } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-    });
-  }
 
-  try {
     await client.batch(
       [
-        "CREATE TABLE IF NOT EXISTS waitlist (email TEXT PRIMARY KEY)",
         {
           sql: "INSERT INTO waitlist (email) VALUES (?)",
           args: [email],
@@ -80,6 +69,12 @@ export async function POST(request: Request) {
 
     return new Response(null, { status: 200 });
   } catch (error) {
+    if (error instanceof Error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 400,
+      });
+    }
+
     console.error(error);
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,

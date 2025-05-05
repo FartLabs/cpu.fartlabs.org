@@ -107,7 +107,7 @@ export default function SignUpForm() {
       onSubmit={handleSubmit}
       className="space-y-4 rounded-lg border border-[#1a3a1a] bg-[#0a1f0a] p-6"
     >
-      <div className="space-y-2">
+      <div className="space-y-2 text-left">
         <Label htmlFor="email">
           Email address <span className="text-red-500">*</span>
         </Label>
