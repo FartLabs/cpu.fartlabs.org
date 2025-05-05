@@ -8,9 +8,9 @@ import SignUpForm from "@/components/sign-up-form";
 import { ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "FartLabs Computer | Imagination-driven development",
+  title: "FartLabs Computer",
   description:
-    "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
+    "Claim your free Computer! Software that works the way you imagine it should.",
   keywords: [
     "FartLabs",
     "computer",
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     "customizable",
   ],
   openGraph: {
-    title: "FartLabs Computer | Imagination-driven development",
+    title: "FartLabs Computer",
     description:
-      "Claim your free FartLabs Computer today! Software that works the way you imagine it should.",
-    url: "https://fartlabs.org",
-    siteName: "FartLabs",
+      "Claim your free Computer! Software that works the way you imagine it should.",
+    url: "https://cpu.fartlabs.org",
+    siteName: "FartLabs Computer",
     images: [
       {
         url: "/og-image.png",
@@ -63,16 +63,16 @@ export default function Home() {
               Features
             </Link>
             <Link
-              href="#about"
+              href="https://fartlabs.org/mission"
               className="text-sm hover:text-white transition-colors"
             >
-              About
+              Our Mission
             </Link>
             <Link
-              href="#signup"
+              href="https://fartlabs.org/blog"
               className="text-sm hover:text-white transition-colors"
             >
-              Sign Up
+              Blog
             </Link>
           </nav>
           <Link
@@ -88,15 +88,12 @@ export default function Home() {
       <section className="relative flex min-h-screen flex-col items-center justify-center pt-16 text-center">
         <div className="container max-w-4xl px-4 py-24 sm:py-32">
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            <TerminalText text="The FartLabs Computer" />
+            The last{" "}
+            <span className="inline-block text-white ring-1 ring-white/25 bg-gradient-to-t from-gray-300/20 -rotate-2 to-white/20 backdrop-blur rounded-md md:px-3 px-1 mr-2 mt-1 md:mx-0 md:mt-0">
+              Computer
+            </span>{" "}
+            you will ever need
           </h1>
-          <p className="mb-8 text-xl text-[#a3ffb0]/80 md:text-2xl">
-            <TerminalText
-              text="Software that works the way you imagine it should."
-              delay={1500}
-              speed={50}
-            />
-          </p>
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
               href="#signup"
@@ -110,16 +107,6 @@ export default function Home() {
             >
               Learn More
             </Link>
-          </div>
-          <div className="relative mx-auto aspect-video max-w-2xl overflow-hidden rounded-lg border-2 border-[#1a3a1a] shadow-2xl">
-            <Image
-              src="/computer-hero.png"
-              alt="FartLabs Computer"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f0a] via-transparent to-transparent"></div>
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
@@ -268,10 +255,12 @@ export default function Home() {
                     experience.
                   </p>
                   <p>
-                    Whether you're a nostalgic tech enthusiast or a
-                    forward-thinking developer, the FartLabs Computer offers the
-                    perfect blend of retro aesthetics and cutting-edge
-                    functionality.
+                    For researchers, scientists, academics, students, and
+                    engineers, the FartLabs Computer provides a unique platform
+                    for exploring new ideas and collaborating on projects. With
+                    its intuitive interface and flexible architecture, it's the
+                    perfect tool for anyone looking to push the boundaries of
+                    technology.
                   </p>
                 </div>
                 <div className="mt-8">
@@ -372,7 +361,7 @@ export default function Home() {
               </h2>
               <p className="mb-8 text-[#a3ffb0]/80">
                 Join the waitlist to be among the first to experience the future
-                of computing. Limited quantities available.
+                of computing.
               </p>
             </ScrollReveal>
 
@@ -388,7 +377,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-[#1a3a1a] bg-[#0a1f0a] py-8">
         <div className="container px-4">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row md:items-start md:justify-center">
             <div className="flex items-center gap-2">
               <div className="relative h-6 w-6 overflow-hidden rounded">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#a3ffb0] to-[#4a8c56]"></div>
@@ -397,44 +386,25 @@ export default function Home() {
                   FL
                 </div>
               </div>
-              <span className="text-sm font-bold">FartLabs</span>
-            </div>
-
-            <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              <Link
-                href="#features"
-                className="text-xs hover:text-white transition-colors"
-              >
-                Features
-              </Link>
-              <Link
-                href="#about"
-                className="text-xs hover:text-white transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="#signup"
-                className="text-xs hover:text-white transition-colors"
-              >
-                Sign Up
-              </Link>
-              <Link
-                href="/privacy"
-                className="text-xs hover:text-white transition-colors"
-              >
-                Privacy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-xs hover:text-white transition-colors"
-              >
-                Terms
-              </Link>
-            </nav>
-
-            <div className="text-xs text-[#a3ffb0]/60">
-              © {new Date().getFullYear()} FartLabs.org. All rights reserved.
+              <span className="text-sm font-bold text-center">
+                <a
+                  href="https://fartlabs.org"
+                  className="text-[#a3ffb0] underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  FartLabs.org
+                </a>{" "}
+                out the{" "}
+                <a
+                  href="https://wazoo.tech"
+                  className="text-[#a3ffb0] underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Wazoo
+                </a>
+              </span>
             </div>
           </div>
         </div>

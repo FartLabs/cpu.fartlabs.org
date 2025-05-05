@@ -10,18 +10,15 @@ import { Loader2 } from "lucide-react";
 
 export default function SignUpForm() {
   const [formState, setFormState] = useState({
-    name: "",
     email: "",
-    reason: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [isEmailRegistered, setIsEmailRegistered] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
@@ -32,13 +29,27 @@ export default function SignUpForm() {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
+    setIsEmailRegistered(false);
 
     // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve, reject) =>
+        setTimeout(() => {
+          // Example condition for already registered email
+          if (formState.email === "registered@example.com") {
+            reject(new Error("Email already registered"));
+          } else {
+            resolve(true);
+          }
+        }, 1500)
+      );
       setIsSubmitted(true);
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      if (err instanceof Error && err.message === "Email already registered") {
+        setIsEmailRegistered(true);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -65,8 +76,13 @@ export default function SignUpForm() {
         </div>
         <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
         <p className="text-[#a3ffb0]/80">
-          Your application has been received. We'll contact you soon with next
-          steps to claim your FartLabs Computer.
+          Thank you for your interest in{" "}
+          <span className="font-bold">FartLabs Computer</span>! We're excited to
+          hear your feedback and welcome you to our{" "}
+          <a href="https://go.fart.tools/chat" className="underline">
+            community on Discord
+          </a>
+          .
         </p>
       </div>
     );
@@ -78,20 +94,9 @@ export default function SignUpForm() {
       className="space-y-4 rounded-lg border border-[#1a3a1a] bg-[#0a1f0a] p-6"
     >
       <div className="space-y-2">
-        <Label htmlFor="name">Full Name</Label>
-        <Input
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-          value={formState.name}
-          onChange={handleChange}
-          className="border border-[#1a3a1a] bg-[#0f2a0f] text-[#a3ffb0] placeholder:text-[#a3ffb0]/50 focus:border-[#4a8c56] focus:ring-[#4a8c56]"
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="email">Email Address</Label>
+        <Label htmlFor="email">
+          Email address <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="email"
           name="email"
@@ -104,17 +109,11 @@ export default function SignUpForm() {
         />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="reason">Why do you want a FartLabs Computer?</Label>
-        <Input
-          id="reason"
-          name="reason"
-          placeholder="Tell us why you're interested"
-          value={formState.reason}
-          onChange={handleChange}
-          className="border border-[#1a3a1a] bg-[#0f2a0f] text-[#a3ffb0] placeholder:text-[#a3ffb0]/50 focus:border-[#4a8c56] focus:ring-[#4a8c56]"
-        />
-      </div>
+      {isEmailRegistered && (
+        <div className="rounded bg-yellow-900/20 p-3 text-sm text-yellow-400">
+          This email is already registered.
+        </div>
+      )}
 
       {error && (
         <div className="rounded bg-red-900/20 p-3 text-sm text-red-400">
