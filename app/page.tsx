@@ -109,9 +109,12 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <a
+          href="#features"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        >
           <ChevronDown className="h-8 w-8 text-[#a3ffb0]" />
-        </div>
+        </a>
       </section>
 
       {/* Features Section */}

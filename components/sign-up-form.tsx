@@ -1,12 +1,12 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { recaptchaSiteKey } from "@/lib/recaptcha";
 
 export default function SignUpForm() {
   const [formState, setFormState] = useState({
@@ -31,28 +31,39 @@ export default function SignUpForm() {
     setError("");
     setIsEmailRegistered(false);
 
-    // Simulate API call
-    try {
-      await new Promise((resolve, reject) =>
-        setTimeout(() => {
-          // Example condition for already registered email
-          if (formState.email === "registered@example.com") {
-            reject(new Error("Email already registered"));
-          } else {
-            resolve(true);
+    (window as any).grecaptcha.ready(function () {
+      (window as any).grecaptcha
+        .execute(recaptchaSiteKey, { action: "submit" })
+        .then(async function (token: string) {
+          try {
+            const response = await fetch("/api/waitlist", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ ...formState, token }),
+            });
+
+            if (!response.ok) {
+              const error = await response.json();
+              throw new Error(error.message);
+            }
+
+            setIsSubmitted(true);
+          } catch (err) {
+            if (
+              err instanceof Error &&
+              err.message === "Email already registered"
+            ) {
+              setIsEmailRegistered(true);
+            } else {
+              setError("Something went wrong. Please try again.");
+            }
+          } finally {
+            setIsSubmitting(false);
           }
-        }, 1500)
-      );
-      setIsSubmitted(true);
-    } catch (err) {
-      if (err instanceof Error && err.message === "Email already registered") {
-        setIsEmailRegistered(true);
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
+        });
+    });
   };
 
   if (isSubmitted) {
@@ -74,6 +85,9 @@ export default function SignUpForm() {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
         </div>
+
+        {/* TODO: Add confetti effect. */}
+
         <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
         <p className="text-[#a3ffb0]/80">
           Thank you for your interest in{" "}
