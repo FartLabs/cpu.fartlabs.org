@@ -1,8 +1,9 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Loader2 } from "lucide-react";
+import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,6 +18,7 @@ export default function SignUpForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [isEmailRegistered, setIsEmailRegistered] = useState(false);
+  const confettiRef = useRef<ConfettiRef>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({
@@ -86,8 +88,6 @@ export default function SignUpForm() {
           </svg>
         </div>
 
-        {/* TODO: Add confetti effect. */}
-
         <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
         <p className="text-[#a3ffb0]/80">
           Thank you for your interest in{" "}
@@ -98,6 +98,14 @@ export default function SignUpForm() {
           </a>
           .
         </p>
+
+        <Confetti
+          ref={confettiRef}
+          className="absolute left-0 top-0 z-0 size-full"
+          onMouseEnter={() => {
+            confettiRef.current?.fire({});
+          }}
+        />
       </div>
     );
   }
