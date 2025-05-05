@@ -1,3 +1,17 @@
+import { createClient } from "@libsql/client";
+
+const dbURL = process.env.TURSO_DATABASE_URL;
+if (!dbURL) {
+  throw new Error("TURSO_DATABASE_URL is not set");
+}
+
+const dbSecret = process.env.TURSO_AUTH_TOKEN;
+if (!dbSecret) {
+  throw new Error("TURSO_AUTH_TOKEN is not set");
+}
+
+const client = createClient({ url: dbURL, authToken: dbSecret });
+
 export async function POST(request: Request) {
   const body: { token: string; email: string } = await request.json();
   const { token, email } = body;
@@ -6,13 +20,13 @@ export async function POST(request: Request) {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const recaptchaResponse = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
-      { method: "POST" }
+      { method: "POST" },
     );
     const recaptchaData = await recaptchaResponse.json();
     if (!recaptchaData.success) {
       return new Response(
         JSON.stringify({ error: "Failed reCAPTCHA verification" }),
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
@@ -29,9 +43,40 @@ export async function POST(request: Request) {
   }
 
   try {
-    // TODO: Store email in db.
-    // https://www.npmjs.com/package/@libsql/client
-    //
+    await client
+      .batch([
+        "CREATE TABLE IF NOT EXISTS waitlist (email TEXT PRIMARY KEY)",
+        {
+          sql: "SELECT email FROM waitlist WHERE email = ?",
+          args: [email],
+        },
+      ])
+      .then((result) => {
+        if (result[1].rows.length > 0) {
+          return new Response(
+            JSON.stringify({ error: "Email already registered" }),
+            { status: 400 },
+          );
+        }
+      });
+  } catch (error) {
+    console.error(error);
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+    });
+  }
+
+  try {
+    await client.batch(
+      [
+        "CREATE TABLE IF NOT EXISTS waitlist (email TEXT PRIMARY KEY)",
+        {
+          sql: "INSERT INTO waitlist (email) VALUES (?)",
+          args: [email],
+        },
+      ],
+      "write",
+    );
 
     return new Response(null, { status: 200 });
   } catch (error) {

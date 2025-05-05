@@ -45,15 +45,15 @@ export default function SignUpForm() {
             });
 
             if (!response.ok) {
-              const error = await response.json();
-              throw new Error(error.message);
+              const { error } = await response.json();
+              throw new Error(error);
             }
 
             setIsSubmitted(true);
-          } catch (err) {
+          } catch (error) {
             if (
-              err instanceof Error &&
-              err.message === "Email already registered"
+              error instanceof Error &&
+              error.message === "Email already registered"
             ) {
               setIsEmailRegistered(true);
             } else {
@@ -125,7 +125,13 @@ export default function SignUpForm() {
 
       {isEmailRegistered && (
         <div className="rounded bg-yellow-900/20 p-3 text-sm text-yellow-400">
-          This email is already registered.
+          Thank you! This email is already registered.
+          <br />
+          Join our{" "}
+          <a href="https://go.fart.tools/chat" className="underline">
+            community on Discord
+          </a>
+          .
         </div>
       )}
 

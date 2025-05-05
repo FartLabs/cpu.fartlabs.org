@@ -53,7 +53,9 @@ export default function Home() {
                 FL
               </div>
             </div>
-            <span className="text-xl font-bold tracking-tight">FartLabs</span>
+            <span className="text-xl font-bold tracking-tight">
+              FartLabs Computer
+            </span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link
