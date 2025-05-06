@@ -71,34 +71,6 @@ export default function SignUpForm() {
   if (isSubmitted) {
     return (
       <div className="rounded-lg border border-[#4a8c56] bg-[#1a3a1a] p-8 text-center">
-        <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#4a8c56]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-white"
-          >
-            <path d="M20 6 9 17l-5-5"></path>
-          </svg>
-        </div>
-
-        <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
-        <p className="text-[#a3ffb0]/80">
-          Thank you for your interest in{" "}
-          <span className="font-bold">FartLabs Computer</span>! We're excited to
-          hear your feedback and welcome you to our{" "}
-          <a href="https://go.fart.tools/chat" className="underline">
-            community on Discord
-          </a>
-          .
-        </p>
-
         <Confetti
           ref={confettiRef}
           className="absolute left-0 top-0 z-0 size-full"
@@ -106,6 +78,36 @@ export default function SignUpForm() {
             confettiRef.current?.fire({});
           }}
         />
+
+        <div className="relative z-10">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#4a8c56]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white"
+            >
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </div>
+
+          <h3 className="mb-2 text-xl font-bold">Thank You!</h3>
+          <p className="text-[#a3ffb0]/80">
+            Thank you for your interest in{" "}
+            <span className="font-bold">FartLabs Computer</span>! We're excited
+            to hear your feedback and welcome you to our{" "}
+            <a href="https://go.fart.tools/chat" className="underline">
+              community on Discord
+            </a>
+            .
+          </p>
+        </div>
       </div>
     );
   }
