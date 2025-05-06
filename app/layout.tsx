@@ -21,6 +21,19 @@ export default function RootLayout({
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
         ></script>
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q1LVZ1EBVW"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Q1LVZ1EBVW');`,
+          }}
+        ></script>
       </head>
       <body>
         <ThemeProvider
