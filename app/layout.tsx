@@ -18,10 +18,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="https://fartlabs.org/fl-logo.png" sizes="any" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
         ></script>
-
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-Q1LVZ1EBVW"

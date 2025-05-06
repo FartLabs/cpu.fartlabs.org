@@ -21,6 +21,15 @@ body {
     sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Overpass", sans-serif;
+}
+
 ::selection {
   background-color: rgba(74, 140, 86, 0.3);
   color: #a3ffb0;
