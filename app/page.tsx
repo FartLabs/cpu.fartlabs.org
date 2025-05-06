@@ -89,7 +89,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative flex min-h-screen flex-col items-center justify-center pt-16 text-center">
         <div className="container max-w-4xl px-4 py-24 sm:py-32">
-          <h1 className="mb-6 text-5xl font-bold tracking-tight sm:text-4xl md:text-6xl lg:text-8xl bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-[#a3ffb0] dark:to-slate-900/10">
+          <h1 className="mb-6 text-5xl font-bold tracking-tight sm:text-4xl md:text-6xl lg:text-8xl bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center font-semibold leading-none text-transparent dark:from-[#a3ffb0] dark:to-slate-900/10">
             The last{" "}
             <span className="inline-block text-white ring-1 ring-white/10 bg-gradient-to-t from-gray-300/10 -rotate-2 to-white/10 backdrop-blur rounded-md md:px-3 px-1 mr-2 mt-1 md:mx-0 md:mt-0">
               Computer
