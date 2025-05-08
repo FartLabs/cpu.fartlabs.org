@@ -1,0 +1,11 @@
+{
+  "lock": false,
+  "imports": {
+    "@hono/hono": "npm:hono@^4.7.8",
+    "@hono/node-server": "npm:@hono/node-server@^1.14.1",
+    "@libsql/client": "npm:@libsql/client@^0.15.4"
+  },
+  "tasks": {
+    "start": "deno -A server/main.ts"
+  }
+}

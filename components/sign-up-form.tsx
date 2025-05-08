@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
 import { Button } from "@/components/ui/button";
@@ -38,7 +38,7 @@ export default function SignUpForm() {
         .execute(recaptchaSiteKey, { action: "submit" })
         .then(async function (token: string) {
           try {
-            const response = await fetch("/api/waitlist", {
+            const response = await fetch("/waitlist", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
